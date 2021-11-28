@@ -74,7 +74,7 @@ function placeInTable(y, x) {
   // STILL NEED TO SET PLAYER CLASS
   const piece = document.createElement("div")
   piece.setAttribute("class", 'piece');
-  piece.classList.add(`Player${currPlayer}`);
+  piece.classList.add(`player${currPlayer}`);
   const correctCell = document.getElementById(`${y}-${x}`);
   correctCell.append(piece);
 }
