@@ -135,6 +135,7 @@ function checkForWin() {
     //  - cells: list of four (y, x) cells
     //  - returns true if all are legal coordinates & all match currPlayer
 
+    //Limit our check to the physical board and check that our inputs all match currPlayer
     return cells.every(
       ([y, x]) =>
         y >= 0 &&
@@ -145,15 +146,18 @@ function checkForWin() {
     );
   }
 
-  // TODO: read and understand this code. Add comments to help you.
-
+  //iterate accross the entire board vertically and horizontally
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
+      //define starting point and check accross the row out to four cells
       let horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
+      //check four places down the column
       let vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
+      //check four places diagonally down to the right
       let diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
+      //check four places diagonally down to the left
       let diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
-
+      //if any of those four orientations pass through our helper win() func and return true, return true as we have a winner
       if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
         return true;
       }
